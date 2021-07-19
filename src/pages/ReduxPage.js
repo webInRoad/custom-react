@@ -12,8 +12,19 @@ export default class ReduxPage extends Component {
       this.unsubscribe()
     }
   }
+  promiseMinus = () => {
+    store.dispatch(Promise.resolve({ type: "MINUS", payload: 2 }));
+  };
+
   add = () => {
-    store.dispatch({ type: 'ADD', payload: 2 })
+    // store.dispatch({ type: 'ADD', payload: 2 })
+
+    store.dispatch(function (dispatch) {
+      console.info(1)
+      setTimeout(() => {
+        dispatch({ type: 'ADD', payload: 2 })
+      }, 1000)
+    })
   }
   render() {
     return (
@@ -21,6 +32,7 @@ export default class ReduxPage extends Component {
         <h3>ReduxPage</h3>
         {store.getState()}
         <button onClick={this.add}>add</button>
+        <button onClick={this.promiseMinus}>promiseMinus</button>
       </div>
     )
   }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+
+    function fun1(d) {
+      console.info(d)
+      console.info(1)
+      return 200
+    }
+    function fun2(a) {
+      console.info(a)
+      console.info(2)
+      return 1000
+    }
+    function componse(...funs) {
+      return funs.reduce((a,b) => (...args) => a(b(...args)))
+    }
+    const sumFun = componse(fun1,fun2)
+    sumFun(1212)
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

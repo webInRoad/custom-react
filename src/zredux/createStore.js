@@ -1,4 +1,7 @@
-export default function createStore(reducer) {
+export default function createStore(reducer, enhense) {
+  if (enhense) {
+    return enhense(createStore)(reducer)
+  }
   let currentState
   let curerntListeners = []
 
