@@ -23,16 +23,16 @@ import { bindActionCreators } from 'redux'
 )
 class ReduxPage extends Component {
 
-  componentDidMount() {
-    this.unsubscribe = store.subscribe(() => {
-      this.forceUpdate()
-    })
-  }
-  componentWillUnmount() {
-    if (this.unsubscribe) {
-      this.unsubscribe()
-    }
-  }
+  // componentDidMount() {
+  //   this.unsubscribe = store.subscribe(() => {
+  //     this.forceUpdate()
+  //   })
+  // }
+  // componentWillUnmount() {
+  //   if (this.unsubscribe) {
+  //     this.unsubscribe()
+  //   }
+  // }
   promiseMinus = () => {
     this.props.dispatch(Promise.resolve({ type: "MINUS", payload: 2 }));
   };
