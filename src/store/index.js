@@ -1,5 +1,5 @@
-// import { createStore, applyMiddleware } from 'redux'
-import { createStore, applyMiddleware } from '../zredux'
+// import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from '../zredux'
 // import thunk from "redux-thunk"
 // import logger from 'redux-logger'
 
@@ -13,12 +13,22 @@ const counterReducer = (state = 0, { type, payload = 1 }) => {
       return state
   }
 }
-const store = createStore(counterReducer, applyMiddleware(thunk, logger, tPromise))
+
+const homeReducer = (state = 0, { type, payload = 1 }) => {
+  switch (type) {
+    case 'ADD':
+      return state + payload * 2
+    case 'MINUS':
+      return state - payload
+    default:
+      return state
+  }
+}
+const store = createStore(combineReducers({ home: homeReducer, count: counterReducer }), applyMiddleware(thunk, logger, tPromise))
 export default store
 
 function logger({ getState }) {
   return next => {
-    console.info(next, "next1")
     return action => {
       console.log("====================================");
       console.log(action.type + "执行了！"); //sy-log
@@ -32,10 +42,9 @@ function logger({ getState }) {
 
 function thunk({ getState, dispatch }) {
   return next => {
-    console.info(next, "next2")
     return action => {
       if (typeof action == 'function') {
-        return action(next, getState)
+        return action(dispatch, getState)
       }
       next(action)
     }
@@ -46,7 +55,7 @@ function tPromise({ getState, dispatch }) {
   return next => {
     return action => {
       if (action instanceof Promise) {
-        action.then(dispatch)
+        return action.then(dispatch)
       }
       next(action)
     }

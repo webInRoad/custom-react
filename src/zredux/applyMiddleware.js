@@ -1,12 +1,11 @@
 export default (...middles) => {
-
   return createStore => {
     return reducer => {
       const store = createStore(reducer)
       let dispatch = store.dispatch
       const mdiApi = {
         getState: store.getState,
-        dispatch
+        dispatch: (action, ...args) => dispatch(action, ...args)
       }
       const middlewareChain = middles.map(mid => mid(mdiApi))
       dispatch = compose(...middlewareChain)(store.dispatch)
