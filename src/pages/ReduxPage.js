@@ -1,6 +1,27 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import store from '../store'
-export default class ReduxPage extends Component {
+import { bindActionCreators } from 'redux'
+
+@connect(
+  ({ home, count }) => ({ home, count }),
+  dispatch => {
+    // const add = () => dispatch({ type: 'ADD' });
+    // const minus = () => dispatch({ type: 'MINUS' })
+    // return {
+    //   dispatch,
+    //   add,
+    //   minus
+    // }
+    let creators = {
+      add: () => ({ type: "ADD" }),
+      minus: () => ({ type: "MINUS" })
+    }
+    creators = bindActionCreators(creators, dispatch) // 写法简单了点
+    return { dispatch, ...creators }
+  }
+)
+class ReduxPage extends Component {
 
   componentDidMount() {
     this.unsubscribe = store.subscribe(() => {
@@ -13,13 +34,13 @@ export default class ReduxPage extends Component {
     }
   }
   promiseMinus = () => {
-    store.dispatch(Promise.resolve({ type: "MINUS", payload: 2 }));
+    this.props.dispatch(Promise.resolve({ type: "MINUS", payload: 2 }));
   };
 
   add = () => {
     // store.dispatch({ type: 'ADD', payload: 2 })
 
-    store.dispatch(function (dispatch) {
+    this.props.dispatch(function (dispatch) {
       console.info(1)
       setTimeout(() => {
         dispatch({ type: 'ADD', payload: 2 })
@@ -27,15 +48,20 @@ export default class ReduxPage extends Component {
     })
   }
   render() {
+    console.info(this.props, "this.props")
+    const { home, count, add } = this.props;
     return (
       <div className="border">
         <h3>ReduxPage</h3>
-        {store.getState().home}
-        {store.getState().count}
-        <button onClick={this.add}>add</button>
+        {home}
+        {count}
+        {/* {store.getState().home} */}
+        {/* {store.getState().count} */}
+        <button onClick={add}>add</button>
         <button onClick={this.promiseMinus}>promiseMinus</button>
       </div>
     )
   }
 
 };
+export default ReduxPage
