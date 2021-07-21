@@ -2,6 +2,8 @@ import './App.css';
 import ReactReduxHookPage from './pages/ReactReduxHookPage'
 import HooksPage from './pages/HooksPage'
 import ReduxPage from './pages/ReduxPage'
+import RouteComponePage from './pages/RouteComponePage'
+import ReactRouterPage from './pages/ReactRouterPage'
 import { useState } from 'react'
 function App() {
   const [num, setNum] = useState(1)
@@ -11,8 +13,9 @@ function App() {
       {/* {
         num % 2 && <ReduxPage />
       } */}
-      <ReactReduxHookPage />
+      {/* <ReactReduxHookPage /> */}
       {/* <HooksPage /> */}
+      <ReactRouterPage />
     </div>
   );
 }
