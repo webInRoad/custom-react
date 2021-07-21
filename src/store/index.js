@@ -3,7 +3,7 @@ import { createStore, applyMiddleware, combineReducers } from '../zredux'
 // import thunk from "redux-thunk"
 // import logger from 'redux-logger'
 
-const counterReducer = (state = 0, { type, payload = 1 }) => {
+export const counterReducer = (state = 0, { type, payload = 1 }) => {
   switch (type) {
     case 'ADD':
       return state + payload
