@@ -8,11 +8,11 @@ function App() {
   return (
     <div className="App">
       <button onClick={() => setNum(num + 1)}>累加</button>
-      {
+      {/* {
         num % 2 && <ReduxPage />
-      }
-      {/* <ReactReduxHookPage />
-      <HooksPage /> */}
+      } */}
+      <ReactReduxHookPage />
+      {/* <HooksPage /> */}
     </div>
   );
 }
