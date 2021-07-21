@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+// import { bindActionCreators } from 'redux'
+import { bindActionCreators } from '../zReactRedux'
 
 @connect(
   ({ home, count }) => ({ home, count }),
+  // {
+  //   add:() => ({type:'ADD'}),
+  //   minus:() => ({type:'MINUS'}),
+  // }
   dispatch => {
     // const add = () => dispatch({ type: 'ADD' });
     // const minus = () => dispatch({ type: 'MINUS' })

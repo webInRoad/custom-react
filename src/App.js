@@ -11,8 +11,8 @@ function App() {
       {
         num % 2 && <ReduxPage />
       }
-      <ReactReduxHookPage />
-      <HooksPage />
+      {/* <ReactReduxHookPage />
+      <HooksPage /> */}
     </div>
   );
 }
