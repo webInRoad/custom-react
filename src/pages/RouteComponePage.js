@@ -4,6 +4,7 @@ import HomePage from './HomePage'
 import LoginPage from './LoginPage'
 import UserPage from './UserPage'
 import _404Page from './_404Page'
+import PrivateUserPage from './PrivateUserPage'
 
 export default class RouteComponePage extends Component {
   render() {
@@ -16,7 +17,8 @@ export default class RouteComponePage extends Component {
           <Link to="/login">登录</Link>
           <Switch>
             <Route path="/" exact component={HomePage}></Route>
-            <Route path="/user" exact strict component={UserPage}></Route>
+            {/* <Route path="/user" exact strict component={UserPage}></Route> */}
+            <PrivateUserPage path="/user" exact strict component={UserPage}></PrivateUserPage>
             <Route path="/login" sensitive component={LoginPage}></Route>
             <Route component={_404Page}></Route>
           </Switch>

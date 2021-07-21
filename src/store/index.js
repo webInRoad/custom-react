@@ -24,7 +24,21 @@ const homeReducer = (state = 0, { type, payload = 1 }) => {
       return state
   }
 }
-const store = createStore(combineReducers({ home: homeReducer, count: counterReducer }), applyMiddleware(thunk, logger, tPromise))
+
+const initLogin = {
+  isLogin:false,
+  userName:""
+}
+
+const loginReducer = (state = initLogin, { type }) => {
+  switch (type) {
+    case 'LOGIN_SUCCESS':
+      return {...state,isLogin:true,userName:"lisi"}
+    default:
+      return state
+  }
+}
+const store = createStore(combineReducers({ home: homeReducer, count: counterReducer, user:loginReducer }), applyMiddleware(thunk, logger, tPromise))
 export default store
 
 function logger({ getState }) {

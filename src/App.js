@@ -15,7 +15,7 @@ function App() {
       } */}
       {/* <ReactReduxHookPage /> */}
       {/* <HooksPage /> */}
-      <ReactRouterPage />
+      <RouteComponePage />
     </div>
   );
 }
