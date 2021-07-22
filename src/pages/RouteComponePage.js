@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import {BrowserRouter as Router,Route,Link,Switch} from'react-router-dom'
+// import {BrowserRouter as Router,Route,Link,Switch} from'react-router-dom'
+import {BrowserRouter as Router,Route,Link} from '../k-react-router-dom'
 import HomePage from './HomePage'
 import LoginPage from './LoginPage'
 import UserPage from './UserPage'
@@ -15,13 +16,13 @@ export default class RouteComponePage extends Component {
           <Link to="/">首页</Link>
           <Link to="/user">用户中心</Link>
           <Link to="/login">登录</Link>
-          <Switch>
+          {/* <Switch> */}
             <Route path="/" exact component={HomePage}></Route>
-            {/* <Route path="/user" exact strict component={UserPage}></Route> */}
-            <PrivateUserPage path="/user" exact strict component={UserPage}></PrivateUserPage>
-            <Route path="/login" sensitive component={LoginPage}></Route>
-            <Route component={_404Page}></Route>
-          </Switch>
+            <Route path="/user" exact strict component={UserPage}></Route>
+            {/* <PrivateUserPage path="/user" exact strict component={UserPage}></PrivateUserPage> */}
+            {/* <Route path="/login" sensitive component={LoginPage}></Route> */}
+            {/* <Route component={_404Page}></Route> */}
+          {/* </Switch> */}
         </Router>
       </div>
     )

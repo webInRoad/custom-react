@@ -24,7 +24,7 @@ export const connect = (mapStateToProps,mapDispatchToProps) => WrappedComponent 
         unsubscribe()
       }
     }
-  }, [])
+  }, [store])
   return <WrappedComponent {...props} {...stateProps} {...dispatchProps}/>
 }
 
