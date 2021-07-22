@@ -21,3 +21,17 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+var a = 0
+function* helloWorldGenerator() {
+  console.info(1212)
+  const res = yield a = a +1;
+  console.info(res,"res")
+  yield "world";
+  return "ending";
+}
+
+var hw = helloWorldGenerator();
+console.info(a,"a1")
+hw.next()
+console.info(a,"a2")

@@ -11,9 +11,7 @@ export default class Link extends Component {
   render() {
     const {to,children} = this.props
     return (
-      <div>
-        <a href={to} onClick={this.jump}>{children}</a>
-      </div>
+      <a href={to} onClick={this.jump}>{children}</a>
     )
   }
 }

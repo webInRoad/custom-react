@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-// import {BrowserRouter as Router,Route,Link,Switch} from'react-router-dom'
-import {BrowserRouter as Router,Route,Link,Switch,withRouter,useHistory,useLocation,useParams,useRouteMatch,Prompt} from '../k-react-router-dom'
+import {BrowserRouter as Router,Route,Link,Switch,withRouter,useHistory,useLocation,useParams,useRouteMatch,Prompt} from'react-router-dom'
+// import {BrowserRouter as Router,Route,Link,Switch,withRouter,useHistory,useLocation,useParams,useRouteMatch,Prompt} from '../k-react-router-dom'
 import HomePage from './HomePage'
 import LoginPage from './LoginPage'
 import UserPage from './UserPage'
@@ -23,7 +23,7 @@ export default class RouteComponePage extends Component {
             {/* <Route path="/user" exact strict component={UserPage}></Route> */}
             <PrivateUserPage path="/user" exact strict component={UserPage}></PrivateUserPage>
             <Route path="/product/:id" render={() => <Product />} />
-            {/* <Route path="/login" sensitive component={LoginPage}></Route> */}
+            <Route path="/login" sensitive component={LoginPage}></Route>
             <Route component={_404Page}></Route>
           </Switch>
         </Router>

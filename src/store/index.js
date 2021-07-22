@@ -2,7 +2,7 @@
 import { createStore, applyMiddleware, combineReducers } from '../zredux'
 // import thunk from "redux-thunk"
 // import logger from 'redux-logger'
-
+import {loginReducer} from "./loginReducer"
 export const counterReducer = (state = 0, { type, payload = 1 }) => {
   switch (type) {
     case 'ADD':
@@ -30,14 +30,14 @@ const initLogin = {
   userName:""
 }
 
-const loginReducer = (state = initLogin, { type }) => {
-  switch (type) {
-    case 'LOGIN_SUCCESS':
-      return {...state,isLogin:true,userName:"lisi"}
-    default:
-      return state
-  }
-}
+// const loginReducer = (state = initLogin, { type }) => {
+//   switch (type) {
+//     case 'LOGIN_SUCCESS':
+//       return {...state,isLogin:true,userName:"lisi"}
+//     default:
+//       return state
+//   }
+// }
 const store = createStore(combineReducers({ home: homeReducer, count: counterReducer, user:loginReducer }), applyMiddleware(thunk, logger, tPromise))
 export default store
 
