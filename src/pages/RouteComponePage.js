@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import {BrowserRouter as Router,Route,Link,Switch} from'react-router-dom'
-import {BrowserRouter as Router,Route,Link,Switch,withRouter,useHistory,useLocation,useParams,useRouteMatch} from '../k-react-router-dom'
+import {BrowserRouter as Router,Route,Link,Switch,withRouter,useHistory,useLocation,useParams,useRouteMatch,Prompt} from '../k-react-router-dom'
 import HomePage from './HomePage'
 import LoginPage from './LoginPage'
 import UserPage from './UserPage'
@@ -50,30 +50,41 @@ class Child extends Component {
   }
 }
 
-function Product(props) {
-  // const {match} = props;
-  const history = useHistory();
-  const location = useLocation();
-  const match = useRouteMatch();
-  const params = useParams();
-  const {id} = match.params;
+// function Product(props) {
+//   // const {match} = props;
+//   const history = useHistory();
+//   const location = useLocation();
+//   const match = useRouteMatch();
+//   const params = useParams();
+//   const {id} = match.params;
 
-  console.log("props", history, location, match, params); //sy-log
-  return (
-    <div>
-      <h1>Product-{id}</h1>
-    </div>
-  );
-}
-
-// @withRouter
-// class Product extends Component {
-//   render() {
-//     console.log("Product", this.props); //sy-log
-//     return (
-//       <div>
-//         <h1>Product</h1>
-//       </div>
-//     );
-//   }
+//   console.log("props", history, location, match, params); //sy-log
+//   return (
+//     <div>
+//       <h1>Product-{id}</h1>
+//     </div>
+//   );
 // }
+@withRouter
+class Product extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {confirm: true};
+  }
+  render() {
+    console.log("Product", this.props); //sy-log
+    return (
+      <div>
+        <h1>Product</h1>
+        <button
+          onClick={() => {
+            this.setState({confirm: !this.state.confirm});
+          }}>
+          change
+        </button>
+        <Link to="/">go home</Link>
+        <Prompt when={this.state.confirm} message="你确定要离开吗？" />
+      </div>
+    );
+  }
+}
