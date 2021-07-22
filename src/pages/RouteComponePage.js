@@ -21,7 +21,7 @@ export default class RouteComponePage extends Component {
             <Route path="/user" exact strict component={UserPage}></Route>
             {/* <PrivateUserPage path="/user" exact strict component={UserPage}></PrivateUserPage> */}
             {/* <Route path="/login" sensitive component={LoginPage}></Route> */}
-            {/* <Route component={_404Page}></Route> */}
+            <Route component={_404Page}></Route>
           {/* </Switch> */}
         </Router>
       </div>
