@@ -11,8 +11,12 @@ export default class Route extends Component {
             const {path,component:Component,...rest} = this.props
             const isMatch = path ? matchPath(location.pathname, this.props)
             : match;
+            const props = {
+              ...context,
+              match
+            }
             return (
-              isMatch ? React.createElement(Component) : null
+              isMatch ? React.createElement(Component,props) : null
             )
           }
         }
