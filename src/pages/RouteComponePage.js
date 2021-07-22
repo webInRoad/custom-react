@@ -17,7 +17,8 @@ export default class RouteComponePage extends Component {
           <Link to="/user">用户中心</Link>
           <Link to="/login">登录</Link>
           {/* <Switch> */}
-            <Route path="/" exact component={HomePage}></Route>
+            {/* <Route path="/" exact component={HomePage}></Route> */}
+            <Route path="/" exact children={() => <Child />} component={HomePage}></Route>
             <Route path="/user" exact strict component={UserPage}></Route>
             {/* <PrivateUserPage path="/user" exact strict component={UserPage}></PrivateUserPage> */}
             {/* <Route path="/login" sensitive component={LoginPage}></Route> */}
@@ -33,3 +34,16 @@ export default class RouteComponePage extends Component {
  *  exact strict 这样 /user/ 就匹配不到 /user 路由
  *  sensitive 这样大写 /Login 就匹配不到小写的 /login
 */
+class Child extends Component {
+  componentDidMount() {
+    console.log("componentDidMount"); //sy-log
+  }
+
+  componentWillUnmount() {
+    console.log("componentWillUnmount"); //sy-log
+  }
+
+  render() {
+    return <div>child-{this.props.count}</div>;
+  }
+}

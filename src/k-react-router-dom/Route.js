@@ -8,7 +8,7 @@ export default class Route extends Component {
         {
           context => {
             const {location,match} = context
-            const {path,component:Component,...rest} = this.props
+            const {path,children,component,render} = this.props
             const isMatch = path ? matchPath(location.pathname, this.props)
             : match;
             const props = {
@@ -16,7 +16,12 @@ export default class Route extends Component {
               match
             }
             return (
-              isMatch ? React.createElement(Component,props) : null
+              isMatch ? 
+                children ? 
+                  typeof children =="function" ? children(props) : children 
+                : component ? React.createElement(component) 
+                : render ? render(props) : null 
+              : typeof children ==='function' ? children(props) : null          
             )
           }
         }
