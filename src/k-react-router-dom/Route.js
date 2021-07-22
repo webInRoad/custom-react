@@ -15,11 +15,12 @@ export default class Route extends Component {
               ...context,
               match
             }
+            console.info(props,"props")
             return (
               isMatch ? 
                 children ? 
                   typeof children =="function" ? children(props) : children 
-                : component ? React.createElement(component) 
+                : component ? React.createElement(component,props) 
                 : render ? render(props) : null 
               : typeof children ==='function' ? children(props) : null          
             )
