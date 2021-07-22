@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import {BrowserRouter as Router,Route,Link,Switch} from'react-router-dom'
-import {BrowserRouter as Router,Route,Link} from '../k-react-router-dom'
+import {BrowserRouter as Router,Route,Link,Redirect} from '../k-react-router-dom'
 import HomePage from './HomePage'
 import LoginPage from './LoginPage'
 import UserPage from './UserPage'
@@ -18,9 +18,9 @@ export default class RouteComponePage extends Component {
           <Link to="/login">登录</Link>
           {/* <Switch> */}
             {/* <Route path="/" exact component={HomePage}></Route> */}
-            <Route path="/" exact children={() => <Child />} component={HomePage}></Route>
-            <Route path="/user" exact strict component={UserPage}></Route>
-            {/* <PrivateUserPage path="/user" exact strict component={UserPage}></PrivateUserPage> */}
+            <Route path="/" exact component={HomePage}></Route>
+            {/* <Route path="/user" exact strict component={UserPage}></Route> */}
+            <PrivateUserPage path="/user" exact strict component={UserPage}></PrivateUserPage>
             {/* <Route path="/login" sensitive component={LoginPage}></Route> */}
             <Route component={_404Page}></Route>
           {/* </Switch> */}
