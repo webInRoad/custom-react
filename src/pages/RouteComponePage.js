@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import {BrowserRouter as Router,Route,Link,Switch} from'react-router-dom'
-import {BrowserRouter as Router,Route,Link,Switch,withRouter} from '../k-react-router-dom'
+import {BrowserRouter as Router,Route,Link,Switch,withRouter,useHistory,useLocation,useParams,useRouteMatch} from '../k-react-router-dom'
 import HomePage from './HomePage'
 import LoginPage from './LoginPage'
 import UserPage from './UserPage'
@@ -50,14 +50,30 @@ class Child extends Component {
   }
 }
 
-@withRouter
-class Product extends Component {
-  render() {
-    console.log("Product", this.props); //sy-log
-    return (
-      <div>
-        <h1>Product</h1>
-      </div>
-    );
-  }
+function Product(props) {
+  // const {match} = props;
+  const history = useHistory();
+  const location = useLocation();
+  const match = useRouteMatch();
+  const params = useParams();
+  const {id} = match.params;
+
+  console.log("props", history, location, match, params); //sy-log
+  return (
+    <div>
+      <h1>Product-{id}</h1>
+    </div>
+  );
 }
+
+// @withRouter
+// class Product extends Component {
+//   render() {
+//     console.log("Product", this.props); //sy-log
+//     return (
+//       <div>
+//         <h1>Product</h1>
+//       </div>
+//     );
+//   }
+// }

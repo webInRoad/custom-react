@@ -4,6 +4,7 @@ import Route from './Route'
 import Redirect from './Redirect'
 import Switch from './Switch'
 import withRouter from './withRouter'
+import {useHistory, useLocation, useRouteMatch, useParams} from "./hooks";
 
 export {
   Link,
@@ -11,5 +12,9 @@ export {
   BrowserRouter,
   Redirect,
   Switch,
-  withRouter
+  withRouter,
+  useHistory,
+  useLocation,
+  useRouteMatch,
+  useParams
 }
